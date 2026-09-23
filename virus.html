@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サンプル動画サイト</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .video-box {
+            width: 100%;
+            height: 300px;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .warning-screen {
+            display: none;
+            color: #d9534f;
+            text-align: left;
+            padding: 20px;
+            border: 2px solid #d9534f;
+            background-color: #fdf7f7;
+        }
+        .warning-title {
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .info-table th, .info-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .info-table th {
+            background-color: #f2f2f2;
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 初期状態の動画再生風画面 -->
+    <div id="main-content">
+        <h2>おすすめの無料動画</h2>
+        <p>以下のプレイヤーをクリックすると再生が始まります。</p>
+        <div class="video-box" onclick="showWarning()">
+            ▶ 動画を再生する
+        </div>
+    </div>
+
+    <!-- クリック後に表示される擬似詐欺画面 -->
+    <div id="warning-screen" class="warning-screen">
+        <div class="warning-title">⚠️ ご登録ありがとうございました</div>
+        <p>会員登録が完了いたしました。以下の内容に基づき、ご利用料金を請求いたします。</p>
+        
+        <table class="info-table">
+            <tr>
+                <th>登録日時</th>
+                <td id="current-time"></td>
+            </tr>
+            <tr>
+                <th>請求金額</th>
+                <td><strong>98,000円（税込）</strong></td>
+            </tr>
+            <tr>
+                <th>お支払い期限</th>
+                <td>3日以内</td>
+            </tr>
+            <tr>
+                <th>プロバイダ情報</th>
+                <td>解析中...（※実際のデータは取得していません）</td>
+            </tr>
+        </table>
+
+        <p style="margin-top: 20px; font-weight: bold; color: #333;">【注意・解説】</p>
+        <p style="font-size: 14px; color: #333;">
+            これはワンクリック詐欺の**仕組みを学ぶための疑似体験画面**です。実際の詐欺サイトでは、このようにユーザーが「同意」していないにもかかわらず、さも契約が成立したかのように見せかけて不安を煽り、金銭を要求してきます。
+        </p>
+    </div>
+</div>
+
+<script>
+    function showWarning() {
+        // 通常画面を非表示にし、警告画面を表示
+        document.getElementById('main-content').style.display = 'none';
+        document.getElementById('warning-screen').style.display = 'block';
+        
+        // 現在の時間を動的に表示
+        const now = new Date();
+        document.getElementById('current-time').innerText = now.toLocaleString();
+    }
+</script>
+
+</body>
+</html>
